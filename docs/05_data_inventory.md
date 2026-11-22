@@ -1,6 +1,6 @@
 # Data inventory
 
-> **Status:** draft v0 (Nov 2026). **None of these resources has been opened or
+> **Status:** draft v0 (Nov 2026), updated 2026-11-22 (world parameters in §2.4). **None of these resources has been opened or
 > profiled yet.** Sizes, coverage, item lists and licences are unknown until
 > the inventory task in §4. Everything marked *(to check)* is an assumption to
 > verify.
@@ -70,6 +70,9 @@ statistics, rather than the value for one place and year.
 | Municipality size distribution | heavy-tailed town sizes (Zipf's law for cities; Gabaix, 1999); national municipality lists | space and scaling (conceptual model §9) |
 | Class sizes, school stages, enrolment by age | education statistics (e.g. OECD *Education at a Glance*) *(to check)* | SM-06 |
 | Workplace sizes, sectors | business and labour statistics *(to choose)* | SM-07 |
+| Transport and commuting distances | commuting statistics of several countries; models of commuting flows *(sources to search)* | world: transport (open points §2.3); daily mobility (open points §4.2) |
+| Dwellings and household sizes | housing and census statistics of several countries *(sources to choose)* | world: dwellings (open points §2.4); households (open points §3.2) |
+| Organisations per population: childcare, health, administration, justice, shops, associations | public-service and business statistics *(sources to choose)* | world: organisations (open points §2.5) |
 | Network sizes, homophily | the social-network literature *(to search)* | SM-10 |
 | Time per domain by age | time-use surveys (e.g. harmonised European time-use surveys) *(to check)* | SM-05; V30 |
 | Words per day | Mehl et al. (2007); LENA norms | SM-12; V30 |

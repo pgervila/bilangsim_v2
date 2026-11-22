@@ -1,6 +1,6 @@
 # Conceptual model (ODD overview)
 
-> **Status:** draft v0 (Nov 2026), for discussion. This document describes the
+> **Status:** draft v0 (Nov 2026), updated 2026-11-22 (layers, §0.1), for discussion. This document describes the
 > new model following the ODD protocol for agent-based models (Grimm et al.,
 > 2020): Overview, Design concepts, Details. It is at the level of *what* the
 > model contains. Each submodel gets its own specification later. It builds on:
@@ -64,6 +64,34 @@ decide the language. Events change memory. Memory decides proficiency.
 Proficiency changes the next choices of language, transmission, partners and
 jobs.
 
+### 0.1 Layers
+
+*Added 2026-11-22; proposed as PROP-12.* The picture above has one box for the
+whole social layer. Building it needs a finer cut. The model has **eight
+layers**. Each layer uses only the layers with lower numbers. The terms are
+defined in the glossary §2 and §3.
+
+| # | Layer | What it contains | Language? | Built in | Submodels |
+|---|---|---|---|---|---|
+| 1 | **Engine** | time unit, simulated calendar, step and update frequencies; the step update; data layout; random streams; run manifests; snapshots; performance | no | Phase 1 | — (its own specification) |
+| 2 | **World** | territory, settlements, districts, transport, dwellings; organisations (childcare, schools, universities, firms, shops and services, health, administration, justice, associations) with their settings; the tools to define, generate, check and inspect a world | no; organisations have **language slots**, filled in Phase 2 | Phase 1 | the structure of SM-06 to SM-09 |
+| 3 | **Population** | people and their attributes, households, kinship, roles in organisations; demography (births, deaths, couples, migration, moves) | no | Phase 1 | SM-01, SM-02, SM-04 |
+| 4 | **Activity and contact** | life course and weekly schedules, daily mobility, activities in settings, groups, events and the event record, networks of ties | no: events carry no language until Phase 2 | Phase 1 | SM-05, SM-10; the speech volumes of SM-12 |
+| 5 | **Language in society** | language profiles and geography; institutional norms (school hours per language, job requirements); language choice; perceptions and motives; transmission; exclusion | yes | Phase 2 | SM-03, SM-11, SM-14, SM-16; the language norms of SM-06 to SM-09 |
+| 6 | **Learning core** | the interface (§8); the baseline learner, then A0; the lexicon of the language pair | yes | Phase 2 (baseline learner), Phase 3 (A0) | SM-13; the words of SM-12 |
+| 7 | **Observation** | virtual census, survey and tests; exposure logs | yes | Phases 2–3 | SM-15 |
+| 8 | **Scenarios and experiments** | social positions of the languages; policy schedules (R11); sweeps, calibration, ensembles | yes | Phases 4, 6, 7 | — |
+
+**Why layers.**
+- **Layers 1–4 make a complete society with no language in it.** It can be
+  built, checked and benchmarked on its own (DEC-11).
+- **Layer 5 fills the language slots** and labels each event with a language.
+- **The learning core sees only events,** through the interface (§8). It can
+  be swapped (baseline learner, A0, research tracks) without touching layers
+  1–5.
+- Several submodels span two layers. A school's classes and staff belong to
+  the world. Its hours of instruction per language belong to layer 5.
+
 ---
 
 ## 1. Purpose and patterns
@@ -108,12 +136,15 @@ al., 2005). The full list is in
 
 ### 2.2 Scales
 
+The time terms are defined in the glossary §3. The open questions about them
+are in open points §1.1.
+
 | Dimension | Choice | Status |
 |---|---|---|
-| Time of learning events | **days** (each event timestamped) | PROP-04 |
-| Social scheduling step | **one week**, with events placed on actual days (weekday or weekend, term or holiday) | PROP-04 |
-| Demography | monthly substeps | proposal |
-| Institutions | academic year and the annual cycle (simulated years, not calendar dates) | proposal |
+| Time unit | **the day**: each event carries its day number, counted from day 0 | PROP-04 |
+| Step | **one week**, with events placed on actual days (weekday or weekend, term or holiday) | PROP-04 |
+| Update frequency of demography | every month | proposal |
+| Update frequency of institutions | the academic year and the annual cycle (simulated years, not calendar dates) | proposal |
 | Space | **municipalities as nodes** (districts for large cities); no grid | PROP-05 |
 | Population | 10³ agents (development), 10⁴ (v1 target), 10⁵ (later), with a scaling scheme (§9) | Q-12 |
 | Simulated span | **generic world:** a burn-in under a baseline scenario, then scenario runs measured in years from their start. No calendar years. | DEC-08 |
@@ -217,6 +248,9 @@ events are processed (principle P4).
 
 **Generic world (v1, DEC-08):**
 
+0. **The world and its founding population** (layers 2 and 3, §0.1) are
+   built by the **world generator** from a **world definition** (glossary §2;
+   open points §2.8). The steps below are its parts.
 1. **Synthetic population** drawn from parameterised distributions: age
    structure, household types, municipality sizes, and each language's share
    of speakers and geography (scenario parameters).

@@ -14,11 +14,13 @@ which opportunities they have.
 **What makes it different:**
 - individual learning grounded in cognitive science, and testable with the
   same tests people take;
-- social mechanisms calibrated on survey data;
+- social mechanisms grounded in published theory, tested first on generic
+  stylised facts, and calibrated on survey data in a later phase;
 - outputs in census and survey units;
 - uncertainty always reported.
 
-**Status:** Phase 0, Definition (Nov 2026). There is no code yet. Start with
+**Status:** Phase 0, Definition (Nov 2026). The society is designed and built
+first, the learning core after. There is no code yet. Start with
 [`docs/01_vision_and_scope.md`](docs/01_vision_and_scope.md). The document
 map is in [`CLAUDE.md`](CLAUDE.md#document-map).
 

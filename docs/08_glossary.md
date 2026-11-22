@@ -3,8 +3,12 @@
 > **Status:** living document, updated 2026-11-22.
 > - §1 explains how the documents refer to each other, to literature and to
 >   code.
-> - §2 is the shared vocabulary. Keep entries short. Add a term when it first
->   appears in a document.
+> - §2 defines the structure of the model: its layers and objects.
+> - §3 defines the terms of time.
+> - §4 holds the other shared vocabulary.
+>
+> Keep entries short. **Define every key concept here when it is first used,
+> in a document or in discussion.**
 
 ---
 
@@ -97,7 +101,57 @@ tells them apart:
 
 ---
 
-## 2. Terms
+## 2. Model structure: layers and objects
+
+The model is built in **eight layers** (conceptual model §0.1; proposed as
+PROP-12). Each layer uses only the layers with lower numbers.
+
+| Term | Meaning |
+|---|---|
+| **Layer** | One level of the model, with its own objects and rules. Layers 1–4 contain no language; languages enter at layer 5. |
+| **Engine** (layer 1) | The machinery that advances simulated time: the step update, the data layout, random streams, run manifests, snapshots. It knows nothing about society or language. |
+| **World** (layer 2) | The physical and institutional structure of the society: territory, settlements, transport, dwellings, organisations. |
+| **Population** (layer 3) | The people: their attributes, households, kinship, roles, and demography (births, deaths, couples, migration, moves). |
+| **Activity and contact** (layer 4) | What people do and whom they meet: schedules, daily mobility, activities in settings, groups, events, networks of ties. |
+| **Language in society** (layer 5) | Everything social about the two languages: profiles, geography, institutional norms, language choice, perceptions and motives, transmission, exclusion. |
+| **Learning core** (layer 6) | What each person knows of each language, learned from events: the baseline learner, then A0, and the lexicon of the language pair. |
+| **Observation** (layer 7) | The virtual census, survey and tests, and the exposure logs. |
+| **Scenarios and experiments** (layer 8) | The social positions of the languages, policy schedules, sweeps, calibration and ensembles. |
+| **Territory** | The whole simulated region, with its subdivisions (to define: open points §2.2). |
+| **Settlement** | A city, town or village: a place where people live together. How settlements relate to municipalities is open (open points §2.2). |
+| **Municipality** | The unit of local government. In the current documents it is the node of space (PROP-05). It may contain several settlements. |
+| **Organisation** | A concrete body in the world with a location, members in roles and the settings where they meet: a school, a firm, a shop, a hospital, a court, an association. Public organisations are also called **institutions**. |
+| **Role** | A person's position in an organisation: pupil, teacher, employee, patient, client, member. |
+| **Language slot** | A field of a world or population object that holds a language property, for example a school's hours of instruction per language. Slots stay empty in Phase 1 and are filled by layer 5 in Phase 2. |
+| **Event record** | What the engine stores for each event: the day, the setting, the participants and their part (speaker, addressee, overhearer), the amount of speech and its register. The language is added in Phase 2. This is what the learning core receives. |
+| **Interface** | The calls between the society and the learning core (conceptual model §8): the society sends events, the learning core returns proficiency. |
+| **World definition** | A file that describes a world to generate: distributions, sizes, rules and seeds (open points §2.8). |
+| **World generator** | The program that builds a world and its founding population from a world definition, reproducibly from a seed. |
+| **World checks** | Tests that a generated world lies within plausible ranges (open points §2.9). |
+| **Importer** | A later tool (specific-society phase) that fills the same objects from the data of a real region instead of from a world definition. |
+| **Plausible range** | An interval for a parameter or an output, from the literature or cross-national statistics, within which the generic world must lie (DEC-08). |
+| **Scenario** | The parameters of a run on top of a world: the social positions of the languages and the policy schedule. |
+
+---
+
+## 3. Time
+
+These terms are kept apart on purpose. "Time scales", used loosely before
+2026-11-22, is not a term of the model: use the terms below.
+
+| Term | Meaning |
+|---|---|
+| **Time unit** | The day: the finest resolution of simulated time. Every event carries the number of the day on which it happens, counted from day 0, the start of the run. |
+| **Simulated calendar** | How days group into weeks, months, school terms and years. The generic world has no calendar years: years are counted from the start of the run. The length of a year and of a month is open (open points §1.1). |
+| **Step** | The stretch of simulated time the engine processes in one pass. The proposal is one week (PROP-04). Within a step, the engine generates every activity of the week and places each on its day. Decisions in a step read the state at the start of the step. The step is bookkeeping only: results must not depend on its length (R5). |
+| **Step update** | Everything the engine does to advance one step, in a fixed order (conceptual model §3). |
+| **Update frequency** | How often the engine updates a given process: activities and events every step; demography every month (proposed); life-course transitions at birthdays and at the start of the academic year; observation every few simulated years. |
+| **Timescale** | How fast a quantity changes in the model, set by a parameter. Examples: `τ_fast`, about 1–2 years, for perceived vitality (motives spec §3); the decay of a memory trace. A timescale belongs to the model; an update frequency belongs to the engine. A quantity can change slowly and still be updated every step. |
+| **Performance budget** | The computing time allowed per step, for a given number of agents, that keeps R7 achievable: 10,000 agents over 100 simulated years in hours on a workstation (open points §1.2). |
+
+---
+
+## 4. Other terms
 
 | Term | Meaning |
 |---|---|

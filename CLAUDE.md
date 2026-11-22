@@ -19,9 +19,18 @@ It is a fresh start that **succeeds the legacy project `bilangsim`**
 `pgervila/bilingual_society_ABM_legacy`). The legacy *ideas* are kept. Its code
 is not. This repository is `bilangsim_v2` (DEC-10).
 
-**Current phase: 0, Definition, preparing Phase 1: the agents' world.** The
-society is built first, with a simple baseline learner, and the learning core
-after (DEC-11). There is no code yet. Work happens in `docs/`. See
+**The model is built in eight layers** (conceptual model §0.1, PROP-12):
+1 engine, 2 world, 3 population, 4 activity and contact, 5 language in
+society, 6 learning core, 7 observation, 8 scenarios and experiments. Layers
+1–4 contain no language. Organisations carry empty language slots that layer 5
+fills later. The learning core sees only events, through the interface.
+
+**Current phase: 0, Definition, preparing Phase 1: the agents' world, layers
+1–4.** The society is built first, with a simple baseline learner, and the
+learning core after (DEC-11). The world layer (geography, settlements,
+transport, dwellings, families, organisations such as schools, firms,
+hospitals and courts) and the tools to build a world get a full design before
+code. There is no code yet. Work happens in `docs/`. See
 [`docs/07_roadmap.md`](docs/07_roadmap.md).
 
 Open points are sorted by the phase that needs them. Only those of the next
@@ -87,6 +96,7 @@ phase are settled, one at a time. **To resume work, read §0.1 of
 
 - Plain English, short sentences, tables for comparisons.
 - References follow the conventions in the glossary §1 ([`docs/08_glossary.md`](docs/08_glossary.md)): short names for documents, `§` for sections, prefixed IDs where they clash.
+- **Define every key concept** in the glossary when it is first used, in a document or in discussion. The structure of the model is defined in the glossary §2, and the terms of time in §3.
 - Stable IDs:
   - DEC/PROP/Q for decisions;
   - R for requirements;
@@ -106,12 +116,12 @@ phase are settled, one at a time. **To resume work, read §0.1 of
 |---|---|
 | [`docs/01_vision_and_scope.md`](docs/01_vision_and_scope.md) | purpose, research questions, principles P1–P12, scope, success criteria |
 | [`docs/02_society_domains.md`](docs/02_society_domains.md) | the domains of social life, with participants, norms, policy levers and data |
-| [`docs/03_conceptual_model.md`](docs/03_conceptual_model.md) | ODD overview: entities, scales, language pairs as parameters, schedule, design concepts, submodels SM-01–SM-16, interface, scaling |
+| [`docs/03_conceptual_model.md`](docs/03_conceptual_model.md) | ODD overview: the eight layers (§0.1), entities, scales, language pairs as parameters, schedule, design concepts, submodels SM-01–SM-16, interface, scaling |
 | [`docs/04_requirements_and_validation.md`](docs/04_requirements_and_validation.md) | R1–R14, V1–V36, hypotheses H1–H3, calibration protocol, invariance tests, parameter register |
 | [`docs/05_data_inventory.md`](docs/05_data_inventory.md) | resources, data to collect, the first inventory task |
 | [`docs/06_decisions.md`](docs/06_decisions.md) | decision log (DEC, PROP, Q) |
 | [`docs/07_roadmap.md`](docs/07_roadmap.md) | phases 0–7 and their gates; the society first (DEC-11) |
-| [`docs/08_glossary.md`](docs/08_glossary.md) | how to read references (§1); shared vocabulary (§2) |
+| [`docs/08_glossary.md`](docs/08_glossary.md) | how to read references (§1); layers and objects (§2); time (§3); other terms (§4) |
 | [`docs/09_open_points.md`](docs/09_open_points.md) | every open point, sorted by the phase that needs it; where we are (§0.1) |
 | [`docs/specs/`](docs/specs/) | submodel specifications, written before code. So far: [`motives_and_transmission.md`](docs/specs/motives_and_transmission.md) (SM-16, SM-03) |
 | [`docs/background/`](docs/background/README.md) | frozen analyses from the legacy repository: the memory model, the redesign proposal, its review, embeddings, the five language features, legacy ideas |
