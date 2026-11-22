@@ -25,6 +25,7 @@
 | DEC-07 | **Catalan–Spanish is the first reference pair, but the model generalises through parameters.** Every property of a language pair (lexicon, frequencies, form overlap) and every property of a language's social position (status, institutional support, share of speakers) is data or a parameter, never a hard-coded assumption. The social layer uses neutral labels A and B. (Answers Q-01.) | 2026-11-21, Paolo | "Catalan/Spanish is OK, but it would be better to be able to generalize via parameters." |
 | DEC-08 | **A realistic generic world first; correlation with a specific society later.** Build a world that is realistic in structure (demography, households, domains, schedules, networks) with parameters in plausible ranges, not tied to a country, period or calendar years. The learning and memory models are still tested against real data from the start. At the collective level, stay general: the targets are generic stylised facts. Calibration to a specific society (e.g. Catalonia, census, EULP) is a later phase. (Answers Q-03.) | 2026-11-21, Paolo | "I would not start with super real conditions or specific years … I'd like to stay general at the beginning, not too coupled to a specific cultural reality." |
 | DEC-09 | **Transmission follows realistic motives, not a "loyalty" trait.** Parents pass on the language they are most proficient in, the one they perceive as more prestigious, or the one they want to defend against assimilation. These motives rest on perceptions built from each person's experience. Specification: [`specs/motives_and_transmission.md`](specs/motives_and_transmission.md). (Answers Q-05.) | 2026-11-21, Paolo | "Most of the times people pass the language they are most proficient with, or the one they perceive as more prestigious, or the one they perceive they want to defend against assimilation." |
+| DEC-10 | **The project repository is named `bilangsim_v2`** (the local folder, from 2026-11-22). The package name is still open. (Partly answers Q-02.) | 2026-11-22, Paolo | Paolo's choice. The name follows the legacy `bilangsim`. |
 
 ---
 
@@ -67,7 +68,7 @@
 - **Recommendation:** the GitHub repository `bilingual_society_ABM`, mirroring
   the legacy `bilingual_society_ABM_legacy`. A package name different from the
   legacy `bilangsim`.
-- **Decision:** —
+- **Decision:** partly, **DEC-10** (2026-11-22). The repository is `bilangsim_v2`. The package name is still open.
 
 ### Q-03 — Start year and historical run
 

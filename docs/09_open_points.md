@@ -27,7 +27,7 @@
 | Date | What happened |
 |---|---|
 | 2026-11-21 | DEC-07, DEC-08 and DEC-09 decided. Motives spec drafted. |
-| 2026-11-22 | Reference conventions written (glossary §1). This document created. Paolo set the birth-order requirement (§1.1). Local git repository created; no remote yet. |
+| 2026-11-22 | Reference conventions written (glossary §1). This document created. Paolo set the birth-order requirement (§1.1). Local git repository created; no remote yet. The project folder renamed `bilangsim_v2` (DEC-10). |
 
 ### 0.2 How we work
 
@@ -367,7 +367,7 @@ because Phase 1 needs it first.
 
 ### 8.3 Project and package names
 
-- **Status:** open. **Where:** Q-02.
+- **Status:** partly decided: the repository is `bilangsim_v2` (DEC-10, 2026-11-22). The package name is still open. **Where:** Q-02.
 
 ### 8.4 Hosting and licence
 

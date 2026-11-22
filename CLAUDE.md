@@ -17,7 +17,7 @@ change that**.
 It is a fresh start that **succeeds the legacy project `bilangsim`**
 (`/home/pgerv/personal_projects/abm_bilang_evolution_legacy`, GitHub
 `pgervila/bilingual_society_ABM_legacy`). The legacy *ideas* are kept. Its code
-is not.
+is not. This repository is `bilangsim_v2` (DEC-10).
 
 **Current phase: 0, Definition.** There is no code yet. Work happens in
 `docs/`. See [`docs/07_roadmap.md`](docs/07_roadmap.md). Open points are settled
