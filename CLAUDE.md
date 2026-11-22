@@ -19,9 +19,13 @@ It is a fresh start that **succeeds the legacy project `bilangsim`**
 `pgervila/bilingual_society_ABM_legacy`). The legacy *ideas* are kept. Its code
 is not. This repository is `bilangsim_v2` (DEC-10).
 
-**Current phase: 0, Definition.** There is no code yet. Work happens in
-`docs/`. See [`docs/07_roadmap.md`](docs/07_roadmap.md). Open points are settled
-one at a time, by area. **To resume work, read §0.1 of
+**Current phase: 0, Definition, preparing Phase 1: the agents' world.** The
+society is built first, with a simple baseline learner, and the learning core
+after (DEC-11). There is no code yet. Work happens in `docs/`. See
+[`docs/07_roadmap.md`](docs/07_roadmap.md).
+
+Open points are sorted by the phase that needs them. Only those of the next
+phase are settled, one at a time. **To resume work, read §0.1 of
 [`docs/09_open_points.md`](docs/09_open_points.md).**
 
 ## Rules
@@ -42,7 +46,9 @@ one at a time, by area. **To resume work, read §0.1 of
 3. **Start simple, on a scientific basis** (DEC-03). Minimal first versions.
    Approaches with emergent structure (self-organising maps, neural agents)
    are research tracks that must beat the specified ones on held-out targets.
-4. **The learning model comes before policy** (DEC-01).
+4. **The learning model comes before policy** (DEC-01). The society is
+   *built* first (DEC-11), but no policy conclusion is drawn before the
+   learning core passes its gate.
 5. **Same experience, same result.** Time is measured in days, events are
    timestamped, and random streams are keyed by agent, purpose and event.
    Results must not depend on how work is chunked or ordered.
@@ -104,9 +110,9 @@ one at a time, by area. **To resume work, read §0.1 of
 | [`docs/04_requirements_and_validation.md`](docs/04_requirements_and_validation.md) | R1–R14, V1–V36, hypotheses H1–H3, calibration protocol, invariance tests, parameter register |
 | [`docs/05_data_inventory.md`](docs/05_data_inventory.md) | resources, data to collect, the first inventory task |
 | [`docs/06_decisions.md`](docs/06_decisions.md) | decision log (DEC, PROP, Q) |
-| [`docs/07_roadmap.md`](docs/07_roadmap.md) | phases 0–7 and their gates |
+| [`docs/07_roadmap.md`](docs/07_roadmap.md) | phases 0–7 and their gates; the society first (DEC-11) |
 | [`docs/08_glossary.md`](docs/08_glossary.md) | how to read references (§1); shared vocabulary (§2) |
-| [`docs/09_open_points.md`](docs/09_open_points.md) | every open point, by area, in the order we settle them; where we are (§0.1) |
+| [`docs/09_open_points.md`](docs/09_open_points.md) | every open point, sorted by the phase that needs it; where we are (§0.1) |
 | [`docs/specs/`](docs/specs/) | submodel specifications, written before code. So far: [`motives_and_transmission.md`](docs/specs/motives_and_transmission.md) (SM-16, SM-03) |
 | [`docs/background/`](docs/background/README.md) | frozen analyses from the legacy repository: the memory model, the redesign proposal, its review, embeddings, the five language features, legacy ideas |
 

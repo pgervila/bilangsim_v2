@@ -5,7 +5,7 @@
 > - **PROP** entries are proposals with no objection yet, awaiting confirmation.
 > - **Q** entries are open questions, with options and a recommendation.
 > - The **open points** document ([`09_open_points.md`](09_open_points.md))
->   lists every open point by area of modelling, in the order we settle them.
+>   lists every open point, sorted by the phase that needs it.
 >
 > When a question is settled, move it to DEC with the date, who decided and
 > why. Do not delete superseded entries; mark them superseded.
@@ -26,6 +26,7 @@
 | DEC-08 | **A realistic generic world first; correlation with a specific society later.** Build a world that is realistic in structure (demography, households, domains, schedules, networks) with parameters in plausible ranges, not tied to a country, period or calendar years. The learning and memory models are still tested against real data from the start. At the collective level, stay general: the targets are generic stylised facts. Calibration to a specific society (e.g. Catalonia, census, EULP) is a later phase. (Answers Q-03.) | 2026-11-21, Paolo | "I would not start with super real conditions or specific years … I'd like to stay general at the beginning, not too coupled to a specific cultural reality." |
 | DEC-09 | **Transmission follows realistic motives, not a "loyalty" trait.** Parents pass on the language they are most proficient in, the one they perceive as more prestigious, or the one they want to defend against assimilation. These motives rest on perceptions built from each person's experience. Specification: [`specs/motives_and_transmission.md`](specs/motives_and_transmission.md). (Answers Q-05.) | 2026-11-21, Paolo | "Most of the times people pass the language they are most proficient with, or the one they perceive as more prestigious, or the one they perceive they want to defend against assimilation." |
 | DEC-10 | **The project repository is named `bilangsim_v2`** (the local folder, from 2026-11-22). The package name is still open. (Partly answers Q-02.) | 2026-11-22, Paolo | Paolo's choice. The name follows the legacy `bilangsim`. |
+| DEC-11 | **The society is built first.** First the agents' world (population, demography, life course and schedules, settings, networks, and the step update), then language in society with the baseline learner, then the learning core. The two are decoupled by the interface (conceptual model §8). DEC-01 still holds: no policy conclusions before the learning core passes its gate. The roadmap is reordered. (Answers Q-13.) | 2026-11-22, Paolo | "The learning core is harder and more abstract, and it will help motivation to ready a basic model of society … we need to define a realistic but optimal handling of step update as well (it could be extremely slow if implemented in a suboptimal way)." |
 
 ---
 
@@ -188,4 +189,4 @@ listening and acceptability modules?
   (Phases 1–2). Implement after the A0 gate, consistent with DEC-01. The
   exposure model for A0 uses scripted histories, so it does not need the
   social layer.
-- **Decision:** —
+- **Decision:** **DEC-11** (2026-11-22). Neither option: the society is built first, with the baseline learner, and the learning core after.

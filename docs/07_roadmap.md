@@ -1,12 +1,17 @@
 # Roadmap
 
-> **Status:** draft v1 (2026-11-21), for discussion. It follows two decisions:
+> **Status:** draft v2 (2026-11-22), for discussion. It follows three
+> decisions:
 > - **DEC-01:** the learning model before policy;
 > - **DEC-08:** a realistic generic world first, and correlation with a
->   specific society later.
+>   specific society later;
+> - **DEC-11:** the society, the agents' world, is built first, with the
+>   baseline learner. The learning core comes after.
 >
 > Each phase ends at a **gate**: an explicit check that must pass before the
-> next phase starts. Hardware tiers come from LMNA §4.11.
+> next phase starts. Hardware tiers come from LMNA §4.11. The open points are
+> sorted by the phase that needs them in
+> [`09_open_points.md`](09_open_points.md).
 
 ---
 
@@ -14,44 +19,62 @@
 
 | Phase | Goal | Hardware | Gate |
 |---|---|---|---|
-| **0. Definition** (now) | Agree what to build and how it is judged | — | documents agreed; bands fixed; data inventory |
-| **1. Foundations** | Repository, lexicon and language-pair generator, exposure model v0, test battery v0, harness, baseline learner | laptop | the harness runs end to end |
-| **2. Learning core A0** | A grounded single-agent learner that passes its targets **against real data** | laptop | A0 passes its bands and beats the baseline (LMNA D1) |
-| **3. Social layer v1** | Generic population, domains, networks, language choice, motives and transmission, measurement | laptop, then workstation | sanity and qualitative social patterns |
-| **4. Generic world** | The coupled generic world: burn-in, generic stylised facts, sweeps over parameters, exploration of policy levers | workstation; cluster for sweeps | V31–V36 reproduced across plausible ranges |
+| **0. Definition** (now) | Settle what Phase 1 needs, and write its specifications | — | the points of open points §1 settled; the Phase 1 specifications written |
+| **1. The agents' world** | Repository; the step update; a generic population with demography, households, life course and schedules, settings by domain and networks. No language dynamics yet. | laptop | demography and time use within plausible ranges; the step update within its performance budget and invariant to bookkeeping |
+| **2. Language in society** | The interface and the baseline learner; language choice; perceptions, motives and transmission; the virtual census and survey | laptop, then workstation | the motives model's unit tests; first qualitative patterns with the baseline learner |
+| **3. Learning core** | Lexicon of the real pair, exposure model v0, test battery and single-agent harness (3a); then the learner A0 (3b) | laptop | A0 passes its bands **against real data** and beats the baseline learner (LMNA D1) |
+| **4. Generic world** | A0 replaces the baseline learner in the society: burn-in, generic stylised facts, sweeps over parameters, exploration of policy levers | workstation; cluster for sweeps | V31–V36 reproduced across plausible ranges |
 | **5. Extensions** | Domain semantics, literacy, administration, richer motives, richer media, a second real language pair, contact and grammar; research tracks B/C | as needed | per extension (LMNA D3 for B/C) |
 | **6. Specific society** | Correlation with one real society (Catalonia first): census population, cohort histories, calibration with hold-out waves | workstation and cluster | V17, V24–V28 on hold-out waves (LMNA D2) |
 | **7. Policy evaluation** | Quantitative scenario comparisons with uncertainty, for that society | cluster | — |
+
+**Why the society comes first (DEC-11).** In Paolo's words, the learning core
+is "harder and more abstract", and a basic model of society "will help
+motivation". The agents' world must be defined first, including "a realistic
+but optimal handling of step update", which "could be extremely slow if
+implemented in a suboptimal way".
+
+**Why this is possible.** The society and the learning core are decoupled by
+the interface (conceptual model §8):
+- the society sends **events** to the learning core: who heard and said how
+  much, in which language, setting and register, on which day;
+- the learning core returns **proficiency**: who understands and who speaks
+  each language.
+
+Until A0 exists, the **baseline learner** sits behind the interface: a simple
+function from exposure to proficiency (conceptual model §8).
+
+**What DEC-01 still requires.** No policy conclusions before the learning core
+passes its gate (Phase 3). Results of Phase 2 come from the baseline learner.
+They show that the mechanisms work, not what a realistic world would do.
 
 ---
 
 ## Phase 0 — Definition
 
-1. **Review and agree** documents 01–06 and the motives specification.
-   Decided so far: Q-01 (DEC-07), Q-03 (DEC-08), Q-05 (DEC-09). Still open,
-   with priority: Q-02 (names), Q-08 (bake-off plan), Q-09 (lexicon size,
-   after the inventory), Q-10 (licence), PROP-10 (motives model), PROP-11
-   (language-pair generator).
-2. **Fix acceptance bands** for the single-agent targets (V1–V16, V19–V20),
-   extracting the published numbers before any fitting. Also write the
-   qualitative bands for the generic stylised facts (V31–V36).
-3. **Data inventory** (data inventory §4): download and profile the lexical
-   and test resources; check licences.
-4. **Write specifications** for the first submodels:
-   - SM-12 exposure model v0 (scripted histories);
-   - SM-13 learning core A0;
-   - SM-15 test battery v0;
-   - the baseline learner;
-   - the language-pair generator.
+1. **Settle the points that Phase 1 needs** (open points §1): time scales,
+   the step update and its performance budget, the stack, space, scaling, the
+   domains of Phase 1, the initial population, specifications before code,
+   the package name. Decided so far: DEC-07 to DEC-11.
+2. **Write the specifications** of the Phase 1 submodels:
+   - the schedule and the step update (conceptual model §3), with a
+     performance budget and a benchmark plan;
+   - SM-01 demography, SM-02 partnering, SM-04 migration and mobility, in
+     simple versions;
+   - SM-05 life course and schedules;
+   - the settings of SM-06 to SM-09: care, school, university, work, services
+     and public space, with media as an input;
+   - SM-10 networks.
+3. **Collect plausible ranges** for their parameters (data inventory §2.4).
 
-   (SM-03 and SM-16 are already drafted in the motives specification.)
-5. **Create the repository** (Q-02, Q-10) and copy this folder into it.
+These can start at any time, because their lead time is long: the data
+inventory for the learning core (data inventory §4), and the design of our
+own data collection (Q-07).
 
-**Gate 0:** the documents are agreed; bands are fixed for the single-agent
-targets and the stylised facts; the inventory report is written; Q-09 is
-decided.
+**Gate 0:** the points of open points §1 are settled; the Phase 1
+specifications are written, with plausible ranges for their parameters.
 
-## Phase 1 — Foundations
+## Phase 1 — The agents' world
 
 - **Repository skeleton:**
   - `uv` project with a package and tests;
@@ -60,13 +83,70 @@ decided.
     event);
   - run manifests;
   - the parameter register.
+- **The step update** (conceptual model §3; open points §1.2):
+  - the order of a simulated week: calendar, demography, life-course
+    transitions, activities, groups, events;
+  - data laid out for speed, with hot kernels in Numba where profiling
+    demands it (PROP-03);
+  - the **event record** designed for the learning core from the start
+    (domains document §4.3). Events carry no language until Phase 2.
+- **Generic synthetic population and demography** (SM-01, SM-02, SM-04), from
+  parameterised distributions.
+- **Life course and weekly schedules** (SM-05).
+- **Settings by domain** (SM-06 to SM-09), in simple versions.
+- **Networks** (SM-10).
+- **Benchmarks:** 10³ agents on a laptop, then 10⁴, against a performance
+  budget per simulated week that leads to R7.
+
+**Gate 1:**
+- Demography and time use are within plausible ranges (V29, V30 as ranges).
+- Network sizes are within plausible ranges (data inventory §2.4).
+- Social outputs do not depend on the order in which agents are processed,
+  and a step of 1 week gives the same outputs as a step of 1 day within
+  ensemble noise (validation document §4).
+- The step update meets its performance budget.
+
+## Phase 2 — Language in society
+
+Before this phase: the points of open points §2. Develop with the baseline
+learner. In order:
+
+1. **The interface** between the society and the learning core (conceptual
+   model §8), and the **baseline learner** behind it: proficiency in each
+   language as a function of cumulative and recent exposure, plus an attrition
+   term, with parameters from published curves (Thordardottir, Unsworth). It
+   is fitted properly in Phase 3.
+2. **Founding language profiles:** each language's share of speakers and its
+   geography (scenario parameters).
+3. **Language choice** with perceived profiles and motive-weighted choice
+   (SM-11).
+4. **Perceptions and motives** (SM-16) and **transmission** (SM-03), from the
+   motives specification.
+5. **Motivation after exclusion** (SM-14).
+6. **Virtual census and language-use survey**, including the perception items
+   (SM-15).
+7. Benchmark 10,000 agents.
+
+**Gate 2:**
+- The behavioural unit tests of the motives model pass (motives spec §8).
+- First qualitative social patterns appear with the baseline learner:
+  transmission follows proficiency (V31); accommodation is asymmetric (V35).
+
+## Phase 3 — Learning core
+
+Before this phase: the points of open points §3, including the data
+inventory, the lexicon size (Q-09) and the acceptance bands for the
+single-agent targets. They can be prepared during Phases 1–2.
+
+### 3a. Foundations
+
 - **Lexicon v0, real pair (Catalan–Spanish):**
   - the concept table (many-to-many, function words as a separate class);
   - frequencies and contextual diversity per register;
   - spelling and IPA form distances;
   - the false-friend list.
 - **Language-pair generator v0** (PROP-11): synthetic pairs from parameters.
-  Check it against the real pair on the single-agent harness.
+  Its timing is open (open points §3.7).
 - **Exposure model v0:**
   - scripted single-agent life histories: daily volumes by age, registers by
     age, weekly rhythm, directed vs overheard input;
@@ -79,15 +159,13 @@ decided.
   - coverage;
   - cognate and non-cognate naming;
   - a provisional mapping to self-reported levels.
-- **Harness:** V1–V16 and V19–V20, plus the invariance tests.
-- **Baseline learner:** proficiency as a fitted function of cumulative and
-  recent exposure, plus attrition.
-- **Online study:** design and ethics application (Q-07).
+- **Harness:** V1–V16 and V19–V20, plus the invariance tests. Its first
+  learner is the baseline learner from Phase 2, fitted here.
 
-**Gate 1:** the harness runs end to end with the baseline learner, on the real
-pair and on a matched synthetic pair; data manifests are in place; CI passes.
+**Gate 3a:** the harness runs end to end with the baseline learner on the real
+pair; data manifests are in place; CI passes.
 
-## Phase 2 — Learning core A0
+### 3b. Learner A0
 
 - **Memory-rule bake-off** (Q-08) on V1–V5, V10 and cost, with V3 as a
   gating test. Choose the rule.
@@ -101,43 +179,17 @@ pair and on a matched synthetic pair; data manifests are in place; CI passes.
   - Sobol sensitivity analysis;
   - checks on hold-out targets.
 
-**Gate 2:**
+**Gate 3b:**
 - A0 is within its bands on the fit targets and on the hold-out targets.
 - It beats the baseline learner on the hold-out targets.
 - The memory update is exactly invariant given a fixed list of events.
-- A matched synthetic pair gives the same results as the real pair.
-
-## Phase 3 — Social layer v1 (generic)
-
-The specifications are written during Phases 1–2 (Q-13). Implementation, in
-order:
-
-1. Generic synthetic population and demography from parameterised
-   distributions (SM-01, SM-02, SM-04).
-2. Life course and weekly schedules (SM-05).
-3. Settings by domain (SM-06 to SM-09).
-4. Networks (SM-10).
-5. **Perceptions and motives** (SM-16) and **transmission** (SM-03), from the
-   motives specification.
-6. Language choice with perceived profiles and motive-weighted choice
-   (SM-11).
-7. Motivation after exclusion (SM-14).
-8. Virtual census and language-use survey, including the perception items
-   (SM-15).
-
-Develop and test with the baseline learner first, then switch to A0.
-Benchmark 10,000 agents.
-
-**Gate 3:**
-- The behavioural unit tests of the motives model pass (motives spec §8).
-- Demography and time use are within plausible ranges (V29, V30 as ranges).
-- First qualitative social patterns appear: transmission follows proficiency
-  (V31); accommodation is asymmetric (V35).
+- If the generator is built in this phase, a matched synthetic pair gives the
+  same results as the real pair.
 
 ## Phase 4 — Generic world
 
-- **Coupled runs:** burn-in under a baseline scenario (PROP-07), then
-  scenario runs.
+- **Coupled runs:** A0 replaces the baseline learner in the society. Burn-in
+  under a baseline scenario (PROP-07), then scenario runs.
 - **Generic stylised facts V31–V36**, by history matching over the plausible
   parameter ranges.
 - **Sweeps:**
@@ -192,13 +244,9 @@ learner.
 
 ## Next steps together
 
-1. Review the motives specification
-   ([`specs/motives_and_transmission.md`](specs/motives_and_transmission.md)),
-   especially its open questions (§9).
-2. Decide Q-02 and Q-10 when the repository is created.
-3. Run the data inventory for the lexical and test resources. I can write the
-   download and profiling scripts once the repository exists.
-4. Extract the acceptance bands for V1–V16, and write the qualitative bands
-   for V31–V36.
-5. Draft the specifications of the exposure model v0, A0, the baseline learner
-   and the language-pair generator.
+1. Settle the points of open points §1 one at a time, starting with time
+   scales (§1.1) and the step update (§1.2).
+2. Write the Phase 1 specifications, starting with the step update, and
+   collect the plausible ranges for their parameters.
+3. Optional, in parallel, because the lead time is long: the data inventory
+   (data inventory §4) and the design of our own data collection (Q-07).
