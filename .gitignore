@@ -1,0 +1,9 @@
+# Raw data is never committed (CLAUDE.md, rule 8)
+data/raw/
+
+# Local Claude Code settings
+.claude/settings.local.json
+
+# Python
+.venv/
+__pycache__/
